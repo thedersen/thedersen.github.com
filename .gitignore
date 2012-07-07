@@ -1,9 +1,7 @@
 .DS_Store
-
-# Thumbnails
 ._*
-
-# SublimeText project files
 .sublime-project
 .sublime-workspace
+
 _site/
+.sass-cache

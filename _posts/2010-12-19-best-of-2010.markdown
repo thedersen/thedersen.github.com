@@ -1,0 +1,133 @@
+---
+layout: post
+title: Best of 2010
+published: true
+---
+
+It's that time of the year again. Lists are popping up all over. Here is one more.
+
+<ul id="paginate">
+	<li>
+		<img src="/blog/images/bestof2010/01.jpg" width="500" height="500" alt="" />
+		<p>01. Arcade Fire - The Suburbs</p>
+	</li>
+   	<li>
+   		<img src="/blog/images/bestof2010/02.jpg" width="500" height="500" alt="" />
+   		<p>02. The National - High Violet</p>
+   	</li>
+	<li>
+		<img src="/blog/images/bestof2010/03.jpg" width="500" height="500" alt="" />
+		<p>03. Sufjan Stevens - The Age of Adz</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/04.jpg" width="500" height="500" alt="" />
+		<p>04. Deerhunter - Halcyon Digest</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/05.jpg" width="500" height="500" alt="" />
+		<p>05. Motorpsycho - Heavy Metal Fruit</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/06.jpg" width="500" height="500" alt="" />
+		<p>06. Beach House - Teen Dream</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/07.jpg" width="500" height="500" alt="" />
+		<p>07. LCD Soundsystem - This Is Happening</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/08.jpg" width="500" height="500" alt="" />
+		<p>08. Tame Impala - Innerspeaker</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/09.jpg" width="500" height="500" alt="" />
+		<p>09. Shearwater - The Golden Archipelago</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/10.jpg" width="500" height="500" alt="" />
+		<p>10. Menomena - Mines</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/11.jpg" width="500" height="500" alt="" />
+		<p>11. The Black Angels - Phosphene Dream</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/12.jpg" width="500" height="500" alt="" />
+		<p>12. The Besnard Lakes - The Besnard Lakes Are The Roaring Night</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/13.jpg" width="500" height="500" alt="" />
+		<p>13. The Walkmen - Lisbon</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/14.jpg" width="500" height="500" alt="" />
+		<p>14. I Am Kloot - Sky at Night</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/15.jpg" width="500" height="500" alt="" />
+		<p>15. Titus Andronicus - The Monitor</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/16.jpg" width="500" height="500" alt="" />
+		<p>16. Broken Social Scene - Forgiveness Rock Record</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/17.jpg" width="500" height="500" alt="" />
+		<p>17. Perfume Genius - Learning</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/18.jpg" width="500" height="500" alt="" />
+		<p>18. Belle & Sebastian - Write about Love</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/19.jpg" width="500" height="500" alt="" />
+		<p>19. The Black Keys - Brothers</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/20.jpg" width="500" height="500" alt="" />
+		<p>20. Black Mountain - Wilderness Heart</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/21.jpg" width="500" height="500" alt="" />
+		<p>21. The Tallest Man on Earth - The Wild Hunt</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/22.jpg" width="500" height="500" alt="" />
+		<p>22. Suckers - Wild Smile</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/23.jpg" width="500" height="500" alt="" />
+		<p>23. The Morning Benders - Big Echo</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/24.jpg" width="500" height="500" alt="" />
+		<p>24. MGMT - Congratulations</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/25.jpg" width="500" height="500" alt="" />
+		<p>25. Midlake - The Courage Of Others</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/26.jpg" width="500" height="500" alt="" />
+		<p>26. Wolf Parade - Expo 86</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/27.jpg" width="500" height="500" alt="" />
+		<p>27. Broken Bells - Broken Bells</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/28.jpg" width="500" height="500" alt="" />
+		<p>28. Ariel Pink's Haunted Graffiti - Before Today</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/29.jpg" width="500" height="500" alt="" />
+		<p>29. Teenage Fanclub - Shadows</p>
+	</li>
+	<li>
+		<img src="/blog/images/bestof2010/30.jpg" width="500" height="500" alt="" />
+		<p>30. of Montreal - False Priest</p>
+	</li>
+</ul>
+<div class="clear">&nbsp;</div>
+
+It's been a good year.

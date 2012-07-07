@@ -1,0 +1,53 @@
+$max-width: 700px;
+
+.home, .post {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+.home {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    &.about-me {
+      float: left;
+      width: 50%;
+    }
+    li {
+      margin-top: 5px;
+    }
+  }
+
+  time {
+    display: block;
+    float: left;
+    width: 112px;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  h2 {
+    margin-top: 50px;
+  }
+}
+
+.post section {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home ul.about-me{
+    float: none;
+    width: 100%;
+  }
+}
+
+/* Contain floats: h5bp.com/q */ 
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

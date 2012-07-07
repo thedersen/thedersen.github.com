@@ -1,0 +1,9 @@
+
+url: http://thedersen.com
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: rdiscount
+pygments: true
+
+disqus_short_name: thedersen
+twitter_user: thedersen

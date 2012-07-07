@@ -1,2 +1,28 @@
-
-<h1>Hello</h1>
+---
+layout: home
+---
+<h1>Hi,</h1>
+<ul class="about-me">
+	<li>I put my code on <a href="https://github.com/thedersen">GitHub</a></li>
+	<li>I hang on <a href="https://twitter.com/thedersen">Twitter</a> and <a href="https://facebook.com/thedersen">Facebook</a></li>
+	<li>I scrobble to <a href="http://last.fm/user/thedersen">Last.fm</a></li>
+	<li>I share stuff at <a href="http://pinterest.com/thedersen">Pinterest</a></li>
+</ul>
+<ul class="about-me">
+	<li>I display my photos at <a href="http://500px.com/thedersen">500px</a></li>
+	<li>I'm the Chapter Lead of <a href="http://bergen.nnug.no" title="Norwegian .NET User Group">NNUG Bergen</a></li>
+	<li>I'm working as a <a href="http://no.linkedin.com/in/thomaspedersen">consultant</a> at <a href="http://www.miles.no">Miles</a></li>
+	<li>I really wish <a href="http://www.youtube.com/watch?v=rkB9OT2XVvA">mini giraffes</a> existed</li>
+</ul>
+<div class="clearfix"></div>
+<h2>On rare occations, I also blog</h2>
+<ul id="posts">
+{% for post in site.posts %}
+  {% if post.published %}
+    <li>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_ordinal }}</time>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
