@@ -20,7 +20,7 @@ layout: home
 {% for post in site.posts %}
   {% if post.published %}
     <li>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_ordinal }}</time>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %e, %Y' }}</time>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endif %}

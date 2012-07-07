@@ -1,0 +1,136 @@
+html {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+article, aside, details, figcaption, figure, dialog,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+.home, .post {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 10px; }
+
+.home ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  .home ul.about-me {
+    float: left;
+    width: 50%; }
+  .home ul li {
+    margin-top: 5px; }
+.home time {
+  display: block;
+  float: left;
+  width: 112px;
+  text-align: right;
+  margin-right: 10px; }
+.home h2 {
+  margin-top: 50px; }
+
+.post section {
+  margin-top: 50px; }
+
+@media only screen and (max-width: 600px) {
+  .home ul.about-me {
+    float: none;
+    width: 100%; } }
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  zoom: 1; }
+
+body {
+  background-color: #002b36;
+  font: 16px "Inconsolata";
+  font-size: 15px;
+  line-height: 18px;
+  color: #839496; }
+
+h1 {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  color: #b58900; }
+
+h2 {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  color: #b58900; }
+
+a, a:visited, a:hover {
+  text-decoration: none;
+  color: #268bd2; }
+
+::-moz-selection {
+  background: #d33682;
+  text-shadow: none; }
+
+::selection {
+  background: #d33682;
+  text-shadow: none; }
+
+.about-me {
+  color: #859900; }
+
+#posts, #talks, #paginate {
+  min-height: 100px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  #posts li, #talks li, #paginate li {
+    margin: 0; }
+
+#paginate li {
+  text-align: center; }
+
+#pagination, #postPagination, #talkPagination {
+  list-style-type: none;
+  padding: 0; }
+  #pagination li, #postPagination li, #talkPagination li {
+    float: left;
+    list-style: none;
+    cursor: pointer;
+    margin: 0 0 0 5px;
+    background-color: #d33682;
+    text-decoration: none;
+    color: #fff;
+    padding: 0; }
+
+.highlight {
+  margin: 10px;
+  line-height: 17px; }
+  .highlight .lineno {
+    color: #586e75;
+    border-right: 1px solid #586e75;
+    padding-right: 2px; }
+  .highlight .k, .highlight .kd, .highlight .kt {
+    color: #b58900; }
+  .highlight .kc {
+    color: #cb4b16; }
+  .highlight .ss, .highlight .mi {
+    color: #cb4b16; }
+  .highlight .s, .highlight .s1, .highlight .s2, .highlight .si, .highlight .sx {
+    color: #859900; }
+  .highlight .o {
+    color: #b58900; }
+  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cs {
+    color: #586e75; }
+  .highlight .n, .highlight .nf, .highlight .no, .highlight .nc, .highlight .nx, .highlight .p {
+    color: #fdf6e3; }
+  .highlight .bash, .highlight .bash .k, .highlight .bash .o {
+    color: #fdf6e3; }
