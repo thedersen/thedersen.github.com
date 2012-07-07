@@ -1,5 +1,8 @@
 module Jekyll
   module DateToOrdinalFilter
+    safe true
+    priority :low
+
     def date_to_ordinal(date)
       date = datetime(date)
       "#{date.strftime('%b')} #{ordinal(date.strftime('%e').to_i)}, #{date.strftime('%Y')}"
