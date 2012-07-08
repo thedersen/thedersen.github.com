@@ -18,15 +18,14 @@ $green:           #859900 !default;
 body {
   background-color: $base03;
   font-family: "Inconsolata";
-  font-size: 15px;
+  font-size: 16px;
   line-height: 18px;
   color: $base0;
 }
 
 h1 {
-  font-size: 30px;
-  line-height: 30px;
-  font-weight: bold;
+  font-size: 28px;
+  line-height: 28px;
   margin-top: 25px;
   margin-bottom: 20px;
   color: $yellow;
@@ -58,7 +57,7 @@ a, a:visited, a:hover {
 }
 
 .feed:hover {
-  color: $yellow;
+  color: $magenta;
 }
 
 #posts, #talks, #paginate, #projects {
@@ -84,6 +83,7 @@ a, a:visited, a:hover {
   padding: 0;
   margin: 0;
   li {
+    font-size: 14px;
     float: left;
     list-style: none;
     cursor: pointer;
