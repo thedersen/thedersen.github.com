@@ -14,22 +14,22 @@ The Dependency Inversion Principle is one form of decoupling as it states:
 So what does this actually mean? Let’s look at a method in a <code>BlogService</code>.
 
 {% highlight csharp linenos %}
-	public class BlogService
-	{
-	    private Repository _repository;
+public class BlogService
+{
+    private Repository _repository;
 
-	    public BlogService()
-	    {
-	        _repository = new Repository();
-	    }
+    public BlogService()
+    {
+        _repository = new Repository();
+    }
 
-	    public void ProcessComment(Comment comment)
-	    {
-	        _repository.Save(comment);
+    public void ProcessComment(Comment comment)
+    {
+        _repository.Save(comment);
 
-	        // Send notification to author and do other stuff here
-	    }
-	}
+        // Send notification to author and do other stuff here
+    }
+}
 {% endhighlight %}
 
 The <code>BlogService</code>, being the high-level module, has a dependency on the <code>Repository</code>, the low-level module. (A dependency, by the way, can easily be spotted by looking for the new keyword.)
@@ -41,39 +41,39 @@ To break this dependency, we are supposed to invert the dependency and make both
 To create the abstraction we introduce an interface called <code>IRepository</code>. In order to make the <code>BlogService</code> depend upon the abstraction, we need to remove the creation of the <code>Repository</code> inside of the <code>BlogService</code>. Instead we inject an <code>IRepository</code> in the constructor when we create a <code>BlogService</code> instance. This way the <code>BlogService</code> is decoupled from the Repository, and it does not really care what repository it gets, as long as it implements the <code>IRepository</code>.
 
 {% highlight csharp linenos %}
-	public interface IRepository
-	{
-	    void Save(Comment comment);
-	}
+public interface IRepository
+{
+    void Save(Comment comment);
+}
 
-	public class BlogService
-	{
-	    private IRepository _repository;
+public class BlogService
+{
+    private IRepository _repository;
 
-	    public BlogService(IRepository repository)
-	    {
-	        _repository = repository;
-	    }
+    public BlogService(IRepository repository)
+    {
+        _repository = repository;
+    }
 
-	    public void ProcessComment(Comment comment)
-	    {
-	        _repository().Save(comment);
+    public void ProcessComment(Comment comment)
+    {
+        _repository().Save(comment);
 
-	        // Send notification to author and do other stuff here
-	    }
-	}
+        // Send notification to author and do other stuff here
+    }
+}
 {% endhighlight %}
 
 To make the <code>Repository</code> depend on an abstraction and make it useful for the <code>BlogService</code>, it simply needs to implement the <code>IRepository</code> interface.
 
 {% highlight csharp linenos %}
-	public class Repository : IRepository
-	{
-	    public void Save(Comment comment)
-	    {
-	        // Save the comment
-	    }
-	}
+public class Repository : IRepository
+{
+    public void Save(Comment comment)
+    {
+        // Save the comment
+    }
+}
 {% endhighlight %}
 
 The dependency between <code>BlogService</code> and <code>Repository</code> is now removed and both depends upon an abstraction; the <code>IRepository</code>. Both classes can easily be changed, and even replaced without affecting each other.

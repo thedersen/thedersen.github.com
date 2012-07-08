@@ -13,11 +13,11 @@ We do a presenter first approach. This means that the presenter is created/loade
 The interface implemented by all presenters looks something like this:
 
 {% highlight csharp linenos %}
-	public interface IPresenter
-	{
-	    void Initialize();
-	    object UI { get; }
-	}
+public interface IPresenter
+{
+    void Initialize();
+    object UI { get; }
+}
 {% endhighlight %}
 
 The initialize method is called whenever the presenter is constructed. The <code>UI</code> property returns the view. The reason that it is of type object, is that then there is no need to reference <code>System.Windows.Forms</code> in the presenter library. This is not crucial as long as you keep UI elements out of the presenters since they are not very unit test friendly.
@@ -25,19 +25,19 @@ The initialize method is called whenever the presenter is constructed. The <code
 Instead of the presenters implementing <code>IPresenter</code> directly, we create a specific interface that inherits <code>IPresenter</code> for each presenter. This interface is usually empty.
 
 {% highlight csharp linenos %}
-	public interface IMyPresenter : IPresenter
-	{
-	}
+public interface IMyPresenter : IPresenter
+{
+}
 {% endhighlight %}
 
 In addition, the presenter must implement a callback interface. The view knows nothing about the presenter itself. Instead it gets a reference to this interface which contains one method for each operation that can be performed on the view plus one for each event that can be raised by a control in the view. Needless to say, we don’t create a method for all events, only the ones we need to respond on.
 
 {% highlight csharp linenos %}
-	public interface IMyPresenterCallbacks
-	{
-	    void OnSave();
-	    void OnMyTextChanged();
-	}
+public interface IMyPresenterCallbacks
+{
+    void OnSave();
+    void OnMyTextChanged();
+}
 {% endhighlight %}
 
 As you may have noticed, both methods on this interface is declared without any parameters and returns void. This is important, otherwise presentation logic might leaking into the view. The presenter always asks the view when it needs information, the view never tells the presenter anything, thus parameter less. Instead of the presenter returning something to the view, it explicitly sets a property or several on the view, thus void. This is actually what makes the view passive – the presenter is doing all the work.
@@ -45,37 +45,37 @@ As you may have noticed, both methods on this interface is declared without any 
 Enough abstractions, let’s move on to the actual implementation of the presenter.
 
 {% highlight csharp linenos %}
-	public class MyPresenter : IMyPresenter, IMyPresenterCallbacks
-	{
-	    private IMyView _view;
+public class MyPresenter : IMyPresenter, IMyPresenterCallbacks
+{
+    private IMyView _view;
 
-	    public MyPresenter(IMyView view)
-	    {
-	        _view = view;
-	    }
+    public MyPresenter(IMyView view)
+    {
+        _view = view;
+    }
 
-	    public object UI
-	    {
-	        get { return _view; }
-	    }
+    public object UI
+    {
+        get { return _view; }
+    }
 
-	    public void Initialize()
-	    {
-	        _view.Attach(this);
-	        _view.SaveButtonText = "Save";
-	        _view.SaveButtonEnabled = false;
-	    }
+    public void Initialize()
+    {
+        _view.Attach(this);
+        _view.SaveButtonText = "Save";
+        _view.SaveButtonEnabled = false;
+    }
 
-	    public void OnSave()
-	    {
-	        // Save _view.MyText
-	    }
+    public void OnSave()
+    {
+        // Save _view.MyText
+    }
 
-	    public void OnMyTextChanged()
-	    {
-	        _view.SaveButtonEnabled = !string.IsNullOrEmpty(_view.MyText);
-	    }
-	}
+    public void OnMyTextChanged()
+    {
+        _view.SaveButtonEnabled = !string.IsNullOrEmpty(_view.MyText);
+    }
+}
 {% endhighlight %}
 
 Nothing magic going on here. As you can see the presenter implements both the <code>IMyPresenter</code> interface as well as the <code>IMyPresenterCallbacks</code> and it gets an instance of an <code>IMyView</code> injected in the constructor, which again can be retrieved form the UI property.
@@ -91,10 +91,10 @@ So, how does the callback methods gets invoked? To find out we need to take a lo
 The base interface for all view looks like this:
 
 {% highlight csharp linenos %}
-	public interface IView<TCallbacks>
-	{
-	    void Attach(TCallbacks presenter);
-	}
+public interface IView<TCallbacks>
+{
+    void Attach(TCallbacks presenter);
+}
 {% endhighlight %}
 
 A simple generic interface with one method used by the presenter to attach itself. The <code>TCallbacks</code> type parameter is the type of the callbacks interface that the presenter implements. In this example; <code>IMyPresenterCallbacks</code>.
@@ -102,51 +102,51 @@ A simple generic interface with one method used by the presenter to attach itsel
 As you saw, <code>MyPresenter</code> got an instance of an <code>IMyView</code>. This is the interface specific to one view and it contains properties for all input fields such as text boxes, check boxes, drop downs etc., labels and state properties of the controls.
 
 {% highlight csharp linenos %}
-	public interface IMyView : IView<IMyPresenterCallbacks>
-	{
-	    string MyText { get; set; }
-	    string SaveButtonText { get; set; }
-	    bool SaveButtonEnabled { get; set; }
-	}
+public interface IMyView : IView<IMyPresenterCallbacks>
+{
+    string MyText { get; set; }
+    string SaveButtonText { get; set; }
+    bool SaveButtonEnabled { get; set; }
+}
 {% endhighlight %}
 
 Finally, we’ll look at how the view is implemented.
 
 {% highlight csharp linenos %}
-	public partial class MyView : Form, IMyView
+public partial class MyView : Form, IMyView
+{
+    private Button _saveButton;
+    private TextBox _myTextBox;
+
+	public MyView()
 	{
-	    private Button _saveButton;
-	    private TextBox _myTextBox;
-
-		public MyView()
-		{
-			InitializeComponent();
-		}
-
-	    public void Attach(IMyPresenterCallbacks callback)
-	    {
-	        _saveButton.Click += (sender, e) => callback.OnSave();
-	        _myTextBox.TextChanged += (sender, e) => callback.OnMyTextChanged();
-	    }
-
-	    public string MyText
-	    {
-	        get { return _myTextBox.Text; }
-	        set { _myTextBox.Text = value; }
-	    }
-
-	    public string SaveButtonText
-	    {
-	        get { return _saveButton.Text; }
-	        set { _saveButton.Text = value; }
-	    }
-
-	    public bool SaveButtonEnabled
-	    {
-	        get { return _saveButton.Enabled; }
-	        set { _saveButton.Enabled = value; }
-	    }
+		InitializeComponent();
 	}
+
+    public void Attach(IMyPresenterCallbacks callback)
+    {
+        _saveButton.Click += (sender, e) => callback.OnSave();
+        _myTextBox.TextChanged += (sender, e) => callback.OnMyTextChanged();
+    }
+
+    public string MyText
+    {
+        get { return _myTextBox.Text; }
+        set { _myTextBox.Text = value; }
+    }
+
+    public string SaveButtonText
+    {
+        get { return _saveButton.Text; }
+        set { _saveButton.Text = value; }
+    }
+
+    public bool SaveButtonEnabled
+    {
+        get { return _saveButton.Enabled; }
+        set { _saveButton.Enabled = value; }
+    }
+}
 {% endhighlight %}
 
 This class is a simple Windows Forms form or control implementing the <code>IMyView</code> interface. The properties on the interface is basically just wrapping the properties of the controls, and does not do anything else. Remember that any logic is in the presenter.

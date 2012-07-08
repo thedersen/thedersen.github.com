@@ -15,41 +15,41 @@ What this means is that you can use the <code>SynchronizationContext</code> clas
 Here is a simple example where we show a message box from a background worker using the <code>Send</code> method on the <code>SynchronizationContext</code> class. When we initialize the <code>Worker</code> class on line 15 we pass in <code>SynchronizationContext.Current</code> which holds the synchronization context for the current thread, i.e. the main UI thread. We then use this context to dispatch calls from the background worker to the UI thread, and the message box is properly shown.
 
 {% highlight csharp linenos %}
-	public partial class Form : System.Windows.Forms.Form
-	{
-	    public Form()
-	    {
-	        InitializeComponent();
-	    }
+public partial class Form : System.Windows.Forms.Form
+{
+    public Form()
+    {
+        InitializeComponent();
+    }
 
-	    private void buttonStart_Click(object sender, EventArgs e)
-	    {
-	        StartAsyncJob();
-	    }
+    private void buttonStart_Click(object sender, EventArgs e)
+    {
+        StartAsyncJob();
+    }
 
-	    private void StartAsyncJob()
-	    {
-	        var worker = new Worker(SynchronizationContext.Current);
+    private void StartAsyncJob()
+    {
+        var worker = new Worker(SynchronizationContext.Current);
 
-	        backgroundWorker.DoWork += (sender, e) => worker.DoWork();
-	        backgroundWorker.RunWorkerAsync();
-	    }
-	}
+        backgroundWorker.DoWork += (sender, e) => worker.DoWork();
+        backgroundWorker.RunWorkerAsync();
+    }
+}
 
-	public class Worker
-	{
-	    private readonly SynchronizationContext _synchronizationContext;
+public class Worker
+{
+    private readonly SynchronizationContext _synchronizationContext;
 
-	    public Worker(SynchronizationContext synchronizationContext)
-	    {
-	        _synchronizationContext = synchronizationContext;
-	    }
+    public Worker(SynchronizationContext synchronizationContext)
+    {
+        _synchronizationContext = synchronizationContext;
+    }
 
-	    public void DoWork()
-	    {
-	        _synchronizationContext.Send(callback => MessageBox.Show("Hello from background worker!"), null);
-	    }
-	}
+    public void DoWork()
+    {
+        _synchronizationContext.Send(callback => MessageBox.Show("Hello from background worker!"), null);
+    }
+}
 {% endhighlight %}
 
 The full example application can be found [here](http://github.com/thedersen/Sandbox/tree/master/SynchronizationContext/).

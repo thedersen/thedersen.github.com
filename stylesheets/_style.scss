@@ -15,9 +15,11 @@ $blue:            #268bd2 !default;
 $cyan:            #2aa198 !default;
 $green:           #859900 !default;
 
+$font-family: "Inconsolata";
+
 body {
   background-color: $base03;
-  font-family: "Inconsolata";
+  font-family: $font-family;
   font-size: 16px;
   line-height: 18px;
   color: $base0;
@@ -93,6 +95,13 @@ a, a:visited, a:hover {
     color: #fff;
     padding: 0px 1px;
   }
+}
+
+pre, code {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 1px;
 }
 
 .error {

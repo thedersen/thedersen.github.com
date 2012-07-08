@@ -15,20 +15,20 @@ Let me explain by giving an example.
 Take a prescription object with one property, <code>CeasedAt</code>. (Ceasing a prescription means aborting the treatment.) To cease a prescription we simply set <code>DateTime.Now</code> on this property. Fine, that works.
 
 {% highlight csharp linenos %}
-	public class Prescription
-	{
-	    public DateTime? CeasedAt { get; set; }
-	}
+public class Prescription
+{
+    public DateTime? CeasedAt { get; set; }
+}
 {% endhighlight %}
 
 Then of course the requirements changes. We now have to specify a reason why the prescription is ceased. We add a new property to the prescription object, <code>CeasedBecauseOf</code>.
 
 {% highlight csharp linenos %}
-	public class Prescription
-	{
-	    public DateTime? CeasedAt { get; set; }
-	    public string CeasedBecauseOf { get; set; }
-	}
+public class Prescription
+{
+    public DateTime? CeasedAt { get; set; }
+    public string CeasedBecauseOf { get; set; }
+}
 {% endhighlight %}
 
 Fine, but how can we ensure that this is set every time we set the <code>CeasedAt</code> property? Well, the problem is that we can’t. All the developers must know this when using this class, and let’s face it, there is a very small chance of that happening, at least over a period of time. Of course we can add a comment describing the requirement, but I don’t like comments. Not everybody reads them, and they tend to get outdated over time as the code changes and the comments doesn’t. I want the code to express it self.
@@ -36,18 +36,18 @@ Fine, but how can we ensure that this is set every time we set the <code>CeasedA
 So let’s try to express this requirement using nothing but code. We keep the <code>CeasedAt</code> property but make the setter private. Then we add a method, <code>Cease</code>.
 
 {% highlight csharp linenos %}
-	public class Prescription
-	{
-	    public DateTime? CeasedAt { get; private set; }
+public class Prescription
+{
+    public DateTime? CeasedAt { get; private set; }
 
-	    public void Cease()
-	    {
-	        if (CeasedAt != null)
-	            throw new InvalidOperationException("Prescription is already ceased.");
+    public void Cease()
+    {
+        if (CeasedAt != null)
+            throw new InvalidOperationException("Prescription is already ceased.");
 
-	        CeasedAt = DateTime.Now;
-	    }
-	}
+        CeasedAt = DateTime.Now;
+    }
+}
 {% endhighlight %}
 
 Much better! Not only is the code now both easier to understand as well as use, but it’s also easier to change since we have encapsulated how we cease a prescription. We are also protected against somebody somewhere accidentally setting <code>CeasedAt</code> on a already ceased prescription.
@@ -55,23 +55,23 @@ Much better! Not only is the code now both easier to understand as well as use, 
 When requirement changes we simply add reason as a parameter to the <code>Cease</code> method.
 
 {% highlight csharp linenos %}
-	public class Prescription
-	{
-	    public DateTime? CeasedAt { get; private set; }
-	    public string CeasedBecauseOf { get; private set; }
+public class Prescription
+{
+    public DateTime? CeasedAt { get; private set; }
+    public string CeasedBecauseOf { get; private set; }
 
-	    public void Cease(string reason)
-	    {
-	        if (CeasedAt != null)
-	            throw new InvalidOperationException("Prescription is already ceased.");
+    public void Cease(string reason)
+    {
+        if (CeasedAt != null)
+            throw new InvalidOperationException("Prescription is already ceased.");
 
-	        if (string.IsNullOrEmpty(reason))
-	            throw new ArgumentNullException("reason");
+        if (string.IsNullOrEmpty(reason))
+            throw new ArgumentNullException("reason");
 
-	        CeasedAt = DateTime.Now;
-	        CeasedBecauseOf = reason;
-	    }
-	}
+        CeasedAt = DateTime.Now;
+        CeasedBecauseOf = reason;
+    }
+}
 {% endhighlight %}
 
 This will ensure at compile time that the requirement is fulfilled. The code also expresses the requirements more clearly. When we cease a prescription we have to specify a reason. In the previous example we could not know that from just reading the code, and therefore we were running a risk of introducing a bug if not all developers on our team was familiar with this requirement.
