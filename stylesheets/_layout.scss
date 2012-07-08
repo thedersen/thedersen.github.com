@@ -1,12 +1,12 @@
 $max-width: 700px;
 
-.home, .post {
+.home, .post, .error {
   max-width: $max-width;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
   margin-bottom: 50px;
-  padding: 10px;
+  padding: 0px 10px;
 }
 
 .home {
@@ -26,7 +26,7 @@ $max-width: 700px;
   time {
     display: block;
     float: left;
-    width: 112px;
+    width: 96px;
     text-align: right;
     margin-right: 10px;
   }
@@ -47,7 +47,57 @@ $max-width: 700px;
   }
 }
 
-/* Contain floats: h5bp.com/q */ 
+@media only screen and (max-width: 320px) {
+  .home time {
+    float: none;
+    text-align: left;
+  }
+  .responsive {
+    display: none;
+  }
+  #talks span {
+    display: block;
+    margin-left: 0;
+  }
+  #posts, #talks {
+    a {
+      margin-left: 0;
+      display: block;
+    }
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  #talks span {
+    display: block;
+    margin-left: 106px;
+  }
+  #posts, #talks {
+    a {
+      margin-left: 106px;
+      display: block;
+    }
+  }
+}
+@media only screen and (min-width: 600px) {
+  #talks span {
+    display: inline;
+    margin-left: 0;
+  }
+  #posts, #talks {
+    a {
+      margin-left: 0;
+      display: inline;
+    }
+  }
+}
+@media only screen and (max-height: 600px) {
+  .home, .post {
+    margin-top: 0;
+  }
+}
+
+/* Contain floats: h5bp.com/q */
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }

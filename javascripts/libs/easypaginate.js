@@ -14,6 +14,15 @@
 
 (function($) {
 
+    var methods = {
+        init: function() {
+
+        },
+        show: function() {
+
+        }
+    };
+
     $.fn.easyPaginate = function(options, pageNo){
 
         if(this.length === 0) {

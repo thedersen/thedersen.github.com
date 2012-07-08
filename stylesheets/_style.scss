@@ -17,7 +17,7 @@ $green:           #859900 !default;
 
 body {
   background-color: $base03;
-  font: 16px "Inconsolata";
+  font-family: "Inconsolata";
   font-size: 15px;
   line-height: 18px;
   color: $base0;
@@ -58,13 +58,17 @@ a, a:visited, a:hover {
 }
 
 #posts, #talks, #paginate {
-  min-height: 100px;
+  min-height: 115px;
   list-style-type: none;
   margin: 0;
   padding: 0;
   li {
-    margin: 0;
+    margin: 0px 0px 5px 0px;
   }
+}
+
+#talks span {
+  color: $green;
 }
 
 #paginate li{
@@ -74,14 +78,27 @@ a, a:visited, a:hover {
 #pagination, #postPagination, #talkPagination {
   list-style-type: none;
   padding: 0;
+  margin: 0;
   li {
     float: left;
     list-style: none;
     cursor: pointer;
-    margin: 0 0 0 5px;
+    margin: 0px 4px 2px 0px;
     background-color: $magenta;
     text-decoration: none;
     color: #fff;
-    padding: 0;
+    padding: 0px 1px;
+  }
+}
+
+.error {
+  text-align: center;
+  h1 {
+    font-size: 80px;
+    line-height: 80px;
+    color: $green;
+  }
+  p:first-child {
+    color: $red;
   }
 }

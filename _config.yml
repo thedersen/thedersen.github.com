@@ -1,6 +1,7 @@
-
+title: thedersen.com
 url: http://thedersen.com
 permalink: /blog/:year/:month/:day/:title/
+feed_url: http://feeds.feedburner.com/thedersen
 
 markdown: rdiscount
 pygments: true

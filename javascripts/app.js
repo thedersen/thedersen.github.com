@@ -20,8 +20,8 @@ jQuery(function($){
     updateHash: false
   });
 
-  $(window).bind('hashchange', function() {
-    var hash = window.location.hash.split('/');
-    $(hash[0]).easyPaginate('show', hash[1]);
-  });
+  // $(window).bind('hashchange', function() {
+  //   var hash = window.location.hash.split('/');
+  //   $(hash[0]).easyPaginate('show', hash[1]);
+  // });
 });

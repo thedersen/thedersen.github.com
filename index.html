@@ -11,11 +11,11 @@ layout: home
 <ul class="about-me">
 	<li>I display my photos at <a href="http://500px.com/thedersen">500px</a></li>
 	<li>I'm the Chapter Lead of <a href="http://bergen.nnug.no" title="Norwegian .NET User Group">NNUG Bergen</a></li>
-	<li>I'm working as a <a href="http://no.linkedin.com/in/thomaspedersen">consultant</a> at <a href="http://www.miles.no">Miles</a></li>
+	<li>I'm a <a href="http://no.linkedin.com/in/thomaspedersen">consultant</a> at <a href="http://www.miles.no">Miles</a></li>
 	<li>I really wish <a href="http://www.youtube.com/watch?v=rkB9OT2XVvA">mini giraffes</a> existed</li>
 </ul>
 <div class="clearfix"></div>
-<h2>On rare occations, I also blog</h2>
+<h2>On some occations, I <span class="responsive">also </span>blog <a href="{{ site.feed_url }}" class="feed"><i class="icon-rss"></i></a></h2>
 <ul id="posts">
 {% for post in site.posts %}
   {% if post.published %}
@@ -25,4 +25,35 @@ layout: home
     </li>
   {% endif %}
 {% endfor %}
+</ul>
+<h2>and give talks</h2>
+<ul id="talks">
+  <li>
+    <time datetime="2012-06-21T00:00:00+01:00">Jun 21, 2012</time>
+    <a href="/talks/2012/06/21/the-return-of-the-fat-client/">The Return of the Fat Client</a> <span>at Miles Architecture</span>
+  </li>
+  <li>
+    <time datetime="2012-04-22T00:00:00+01:00">Apr 22, 2012</time>
+    <a href="/talks/2012/04/22/the-return-of-the-fat-client/">The Return of the Fat Client</a> <span>Workshop at Miles Camp</span>
+  </li>
+  <li>
+    <time datetime="2012-04-17T00:00:00+01:00">Apr 17, 2012</time>
+    <a href="/talks/2012/04/17/javascript-the-good-parts/">JavaScript, The Good Parts</a> <span>at Miles Frontend</span>
+  </li>
+  <li>
+    <time datetime="2012-01-25T00:00:00+01:00">Jan 25, 2012</time>
+    <a href="/talks/2012/01/25/javascript-the-good-parts/">JavaScript, The Good Parts</a> <span>at NNUG Bergen</span>
+  </li>
+  <li>
+    <time datetime="2011-11-30T00:00:00+01:00">Nov 30, 2011</time>
+    <a href="/talks/2011/11/30/nuget/">NuGet</a> <span>at NNUG Bergen</span>
+  </li>
+  <li>
+    <time datetime="2011-05-23T00:00:00+01:00">May 23, 2011</time>
+    <a href="http://vimeo.com/24727747">Kanban løser ingen problem</a> <span>at Roots Conference</span>
+  </li>
+  <li>
+    <time datetime="2009-05-27T00:00:00+01:00">May 27, 2009</time>
+    <a href="/talks/2009/05/27/implementing-agile-practices/">Implementing Agile Practices</a> <span>at NNUG Bergen</span>
+  </li>
 </ul>
