@@ -57,6 +57,10 @@ a, a:visited, a:hover {
   color: $green;
 }
 
+.feed:hover {
+  color: $yellow;
+}
+
 #posts, #talks, #paginate, #projects {
   min-height: 115px;
   list-style-type: none;
