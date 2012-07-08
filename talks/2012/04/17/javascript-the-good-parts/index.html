@@ -1,0 +1,3104 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>JavaScript</title>
+    <!-- Styles -->
+
+    <link rel="stylesheet" media="print" href="themes/html5rocks/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="themes/html5rocks/css/screen.css">
+
+
+    <!-- /Styles -->
+    <!-- Javascripts -->
+
+    <script type="text/javascript" src="themes/html5rocks/js/slides.js"></script>
+
+
+    <!-- /Javascripts -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28673028-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  </script>
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+
+      <!-- slide source: javascript/intro.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>JavaScript</h1></header>
+
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/intro.md">javascript/intro.md</a>
+            </aside>
+
+            <aside class="page_number">
+              1/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/bad-vs-good.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+
+            <section><p><img alt="bad-vs-good" src="javascript/../images/bad-vs-good.jpg" /></p></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/bad-vs-good.md">javascript/bad-vs-good.md</a>
+            </aside>
+
+            <aside class="page_number">
+              2/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/bad-vs-good.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>The Bad Parts</h1></header>
+
+
+            <section><ul>
+<li>Global Variables</li>
+<li>Semicolon insertion</li>
+<li>+ adds and concatenates</li>
+<li><code>typeof</code></li>
+<li><code>with</code> and <code>eval</code></li>
+<li>phony arrays</li>
+<li><code>false</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code></li>
+<li><code>==</code> and <code>!=</code></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/bad-vs-good.md">javascript/bad-vs-good.md</a>
+            </aside>
+
+            <aside class="page_number">
+              3/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/bad-vs-good.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>The Good Parts</h1></header>
+
+
+            <section><ul>
+<li>Loose Typing</li>
+<li>Dynamic Objects</li>
+<li>Object Literals</li>
+<li>Functions (lambda)</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/bad-vs-good.md">javascript/bad-vs-good.md</a>
+            </aside>
+
+            <aside class="page_number">
+              4/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/01_intro.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>JavaScript Types</h1></header>
+
+
+            <section><ul>
+<li>Object</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/01_intro.md">javascript/types/01_intro.md</a>
+            </aside>
+
+            <aside class="page_number">
+              5/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/02_objects.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Objects</h1></header>
+
+
+            <section><ul>
+<li>An object is a dynamic, mutable collection of properties</li>
+<li>Every property has a key string that is unique within that object</li>
+<li>Prototype linkage feature, that allows one object to inherit properties of another</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/02_objects.md">javascript/types/02_objects.md</a>
+            </aside>
+
+            <aside class="page_number">
+              6/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/02_objects.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>get, set, and delete</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="c1">// get</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+
+<span class="c1">// set</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+<span class="nx">object</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+
+<span class="c1">// delete</span>
+<span class="k">delete</span> <span class="nx">object</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="k">delete</span> <span class="nx">object</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/02_objects.md">javascript/types/02_objects.md</a>
+            </aside>
+
+            <aside class="page_number">
+              7/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/02_objects.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Object literals</h1></header>
+
+
+            <section><h3>An expressive notation for creating objects:</h3>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">emptyObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;some property&#39;</span><span class="o">:</span> <span class="s1">&#39;some value&#39;</span><span class="p">,</span>
+    <span class="nx">foo</span><span class="o">:</span> <span class="nx">bar</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do stuff</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/02_objects.md">javascript/types/02_objects.md</a>
+            </aside>
+
+            <aside class="page_number">
+              8/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/03_prototype.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Prototype</h1></header>
+
+
+            <section><ul>
+<li>Every object is linked to a prototype object from which it can inherit properties</li>
+<li>All objects created from object literals are linked to <code>Object.prototype</code></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/03_prototype.md">javascript/types/03_prototype.md</a>
+            </aside>
+
+            <aside class="page_number">
+              9/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/03_prototype.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Prototype</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">thomas</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Thomas&#39;</span><span class="p">);</span>
+<span class="nx">thomas</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/03_prototype.md">javascript/types/03_prototype.md</a>
+            </aside>
+
+            <aside class="page_number">
+              10/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/03_prototype.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition runnable">
+          <div class="inner">
+
+            <header><h1>Prototype</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">thomas</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Thomas&#39;</span><span class="p">);</span>
+<span class="nx">thomas</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayMyName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">thomas</span><span class="p">.</span><span class="nx">sayMyName</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/03_prototype.md">javascript/types/03_prototype.md</a>
+            </aside>
+
+            <aside class="page_number">
+              11/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/03_prototype.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Prototype Chaining</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello, my name is &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">Customer</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Customer</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+
+<span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">(</span><span class="s1">&#39;Customer&#39;</span><span class="p">);</span>
+<span class="nx">customer</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/03_prototype.md">javascript/types/03_prototype.md</a>
+            </aside>
+
+            <aside class="page_number">
+              12/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_numbers.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Numbers</h1></header>
+
+
+            <section><ul>
+<li>Only one number type</li>
+<li>double-precision 64-bit format IEEE 754 values</li>
+<li>Math namespace for advanced operations</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_numbers.md">javascript/types/04_numbers.md</a>
+            </aside>
+
+            <aside class="page_number">
+              13/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_numbers.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>parseInt</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="nx">alert</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">));</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">));</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_numbers.md">javascript/types/04_numbers.md</a>
+            </aside>
+
+            <aside class="page_number">
+              14/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_numbers.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>parseInt</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">);</span> <span class="c1">// 123</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">);</span> <span class="c1">// 8</span>
+</pre></div>
+
+<h1>?!?</h1></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_numbers.md">javascript/types/04_numbers.md</a>
+            </aside>
+
+            <aside class="page_number">
+              15/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_numbers.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>parseInt</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">);</span> <span class="c1">// 123</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">);</span> <span class="c1">// 8</span>
+</pre></div>
+
+<h1>?!?</h1>
+<div class="highlight"><pre><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_numbers.md">javascript/types/04_numbers.md</a>
+            </aside>
+
+            <aside class="page_number">
+              16/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_numbers.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>parseInt</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">);</span> <span class="c1">// 123</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">);</span> <span class="c1">// 8</span>
+</pre></div>
+
+<h1>?!?</h1>
+<div class="highlight"><pre><span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;010&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nb">parseInt</span><span class="p">(</span><span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3</span>
+</pre></div>
+
+<h1>ALWAYS SPECIFY THE BASE</h1></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_numbers.md">javascript/types/04_numbers.md</a>
+            </aside>
+
+            <aside class="page_number">
+              17/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/04_strings.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Strings</h1></header>
+
+
+            <section><ul>
+<li>Sequences of unicode characters (16 bit) </li>
+<li>Similar strings are equal (===)</li>
+<li>Strings are objects</li>
+<li>Strings are immutable</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/04_strings.md">javascript/types/04_strings.md</a>
+            </aside>
+
+            <aside class="page_number">
+              18/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/05_booleans.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Booleans</h1></header>
+
+
+            <section><ul>
+<li><code>true</code> or <code>false</code></li>
+<li><code>0</code>, <code>""</code>, <code>NaN</code>, <code>null</code> and <code>undefined</code> are falsy </li>
+<li>Everything else is truthy </li>
+<li>Boolean operations: <code>&amp;&amp;</code>, <code>||</code> and <code>!</code></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/05_booleans.md">javascript/types/05_booleans.md</a>
+            </aside>
+
+            <aside class="page_number">
+              19/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/06_arrays.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Arrays</h1></header>
+
+
+            <section><ul>
+<li>A special type of object; Keys are whole numbers</li>
+<li>No need to provide type or length when creating an array</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/06_arrays.md">javascript/types/06_arrays.md</a>
+            </aside>
+
+            <aside class="page_number">
+              20/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/06_arrays.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Array literals</h1></header>
+
+
+            <section><h3>An expressive notation for creating arrays</h3>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">number</span><span class="o">:</span> <span class="s1">&#39;three&#39;</span><span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}];</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/06_arrays.md">javascript/types/06_arrays.md</a>
+            </aside>
+
+            <aside class="page_number">
+              21/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/06_arrays.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Array.length</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">];</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="nx">a</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;three&#39;</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</pre></div>
+
+<ul>
+<li><code>array.length</code> is always one more than the highest index</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/06_arrays.md">javascript/types/06_arrays.md</a>
+            </aside>
+
+            <aside class="page_number">
+              22/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/07_dates.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Dates</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 25, 2012&#39;</span><span class="p">);</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getYear</span><span class="p">();</span>     <span class="c1">// 2012</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">();</span>    <span class="c1">// 0 ???</span>
+<span class="nx">date</span><span class="p">.</span><span class="nx">getDate</span><span class="p">();</span>     <span class="c1">// 25</span>
+</pre></div>
+
+<ul>
+<li>The <code>Date</code> function is based on Java's Date class...</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/07_dates.md">javascript/types/07_dates.md</a>
+            </aside>
+
+            <aside class="page_number">
+              23/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/types/08_regexp.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>RegExp</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">myString</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Great Success!</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/types/08_regexp.md">javascript/types/08_regexp.md</a>
+            </aside>
+
+            <aside class="page_number">
+              24/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/01_intro.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Functions</h1></header>
+
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/01_intro.md">javascript/functions/01_intro.md</a>
+            </aside>
+
+            <aside class="page_number">
+              25/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_functions.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Functions are first class objects</h1></header>
+
+
+            <section><ul>
+<li>May be passed as an argument to a function</li>
+<li>May be returned from a function</li>
+<li>May be assigned to a variable</li>
+<li>May be stored in an object or array</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_functions.md">javascript/functions/02_functions.md</a>
+            </aside>
+
+            <aside class="page_number">
+              26/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_functions.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Function literals</h1></header>
+
+
+            <section><h1>A function literal has four parts:</h1>
+<ul>
+<li>the reserved word <code>function</code></li>
+<li>optional name (which can be used to call itself in recursion)</li>
+<li>optional parameters</li>
+<li>set of statements wrapped in curly braces</li>
+</ul>
+<h1>Example:</h1>
+<div class="highlight"><pre><span class="c1">// Create a variable called add and store a function</span>
+<span class="c1">// in it that adds two numbers</span>
+<span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// alternatively (but not quite the same as we&#39;ll see later)</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_functions.md">javascript/functions/02_functions.md</a>
+            </aside>
+
+            <aside class="page_number">
+              27/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Function invocation patterns</h1></header>
+
+
+            <section><ul>
+<li>Method invocation pattern</li>
+<li>Function invocation pattern</li>
+<li>Constructor invocation pattern</li>
+<li>Apply invocation pattern</li>
+</ul>
+<h1>These patterns differ in how <code>this</code> is initialized</h1></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              28/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Method invocation pattern</h1></header>
+
+
+            <section><ul>
+<li>When a function is stored as a property of an object, it is called a method</li>
+<li>When a method is invoked, <code>this</code> is bound to that object (late binding)</li>
+</ul>
+<h1>Example:</h1>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">increment</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">inc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">+=</span> <span class="nx">inc</span><span class="p">;</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">myObject</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              29/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Function invocation pattern</h1></header>
+
+
+            <section><ul>
+<li>When the function is <strong>not</strong> the property of an object, it is called a function</li>
+<li>When a function is invoked, <code>this</code> is bound to the global object</li>
+</ul>
+<h1>Example:</h1>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// Window in the browser</span>
+<span class="p">};</span>
+
+<span class="nx">foo</span><span class="p">();</span>
+</pre></div>
+
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+              <p>This was a design mistake in the language.
+A consequence is that a method cannot employ an inner function to help it do its work because the inner function does not share the method's access to the object as its <code>this</code> is bound to the wrong value</p>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              30/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Function invocation pattern</h1></header>
+
+
+            <section><h1>Example 2:</h1>
+<div class="highlight"><pre><span class="nx">myObject</span><span class="p">.</span><span class="kr">double</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">helper</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// this.value</span>
+                                                  <span class="c1">// is undefined</span>
+    <span class="p">};</span>
+
+    <span class="nx">helper</span><span class="p">();</span> <span class="c1">// invoke helper as a function</span>
+<span class="p">};</span>
+
+<span class="nx">myObject</span><span class="p">.</span><span class="kr">double</span><span class="p">();</span> <span class="c1">// invoke double as a method</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              31/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Function invocation pattern</h1></header>
+
+
+            <section><h1>Example 2:</h1>
+<div class="highlight"><pre><span class="nx">myObject</span><span class="p">.</span><span class="kr">double</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// workaround</span>
+
+    <span class="kd">var</span> <span class="nx">helper</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">that</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="nx">that</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">that</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="nx">helper</span><span class="p">();</span> <span class="c1">// invoke helper as a function</span>
+<span class="p">};</span>
+
+<span class="nx">myObject</span><span class="p">.</span><span class="kr">double</span><span class="p">();</span> <span class="c1">// invoke double as a method</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              32/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Constructor invocation pattern</h1></header>
+
+
+            <section><ul>
+<li>If a function is invoked with the <code>new</code> prefix, a new object will be created with a hidden link to the value of the function's <code>prototype</code> member</li>
+<li><code>this</code> is bound to that new object</li>
+<li>By convention, they are kept in variables with a capitalized name</li>
+<li>Use of constructor functions is <strong>not</strong> recommended</li>
+</ul>
+<h1>Example:</h1>
+<div class="highlight"><pre><span class="c1">// Create a constructor function called Foo</span>
+<span class="kd">var</span> <span class="nx">Foo</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Make an instance of Foo</span>
+<span class="kd">var</span> <span class="nx">myFoo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="s1">&#39;confused&#39;</span><span class="p">);</span>
+<span class="c1">// Call Foo as an function</span>
+<span class="kd">var</span> <span class="nx">myFoo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">(</span><span class="s1">&#39;confused&#39;</span><span class="p">);</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              33/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/02_invocation_patterns.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Apply invocation pattern</h1></header>
+
+
+            <section><ul>
+<li>The <code>apply</code> method lets us construct an array of arguments to use to invoke a function</li>
+<li>It lets us choose the value of <code>this</code></li>
+</ul>
+<h1>Example:</h1>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">add</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span> <span class="c1">// this === context inside</span>
+                                     <span class="c1">// the add function</span>
+
+<span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="nx">add</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// this === context inside</span>
+                                   <span class="c1">// the add function</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/02_invocation_patterns.md">javascript/functions/02_invocation_patterns.md</a>
+            </aside>
+
+            <aside class="page_number">
+              34/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/03_hoisting.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Hoisting</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="s1">&#39;my value&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myvar</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="s1">&#39;local value&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">bar</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/03_hoisting.md">javascript/functions/03_hoisting.md</a>
+            </aside>
+
+            <aside class="page_number">
+              35/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/03_hoisting.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition runnable">
+          <div class="inner">
+
+            <header><h1>Hoisting</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="s1">&#39;my value&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">myvar</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">myvar</span><span class="p">);</span> <span class="c1">// undefined</span>
+    <span class="nx">myvar</span> <span class="o">=</span> <span class="s1">&#39;local value&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">bar</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/03_hoisting.md">javascript/functions/03_hoisting.md</a>
+            </aside>
+
+            <aside class="page_number">
+              36/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/03_hoisting.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Hoisting</h1></header>
+
+
+            <section><h1>Function expression:</h1>
+<div class="highlight"><pre><span class="nx">alert</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<h1>Function declaration:</h1>
+<div class="highlight"><pre><span class="nx">alert</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/03_hoisting.md">javascript/functions/03_hoisting.md</a>
+            </aside>
+
+            <aside class="page_number">
+              37/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/03_hoisting.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition runnable">
+          <div class="inner">
+
+            <header><h1>Hoisting</h1></header>
+
+
+            <section><h1>Function expression:</h1>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span> <span class="c1">// error</span>
+<span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<h1>Function declaration:</h1>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span> <span class="c1">// 5</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/03_hoisting.md">javascript/functions/03_hoisting.md</a>
+            </aside>
+
+            <aside class="page_number">
+              38/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/03_hoisting.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Hoisting</h1></header>
+
+
+            <section><h1>Takeaway:</h1>
+<ul>
+<li>Declare <strong>all</strong> variables at the top of your function</li>
+<li>Declare <strong>all</strong> functions before you call them</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/03_hoisting.md">javascript/functions/03_hoisting.md</a>
+            </aside>
+
+            <aside class="page_number">
+              39/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Scope</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">bar</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              40/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition runnable">
+          <div class="inner">
+
+            <header><h1>Scope</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// true</span>
+        <span class="nx">foo</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="p">}</span>
+<span class="nx">bar</span><span class="p">();</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              41/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Global Scope</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">bar</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              42/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Global Scope</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Creates a global variable</span>
+<span class="p">}</span>
+<span class="nx">bar</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span> <span class="c1">// 10</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Creates a local variable</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span> <span class="c1">// y is undefined</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              43/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>GLOBAL VARIABLES ARE EVIL!</h1></header>
+
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              44/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/04_scope.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Scope</h1></header>
+
+
+            <section><h1>Takeaway:</h1>
+<ul>
+<li>JavaScript has <strong>function scope</strong>, not block scope</li>
+<li>If you forget the <strong>var</strong> keyword, you create a global reference</li>
+<li><strong>Never</strong> forget the var keyword</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/04_scope.md">javascript/functions/04_scope.md</a>
+            </aside>
+
+            <aside class="page_number">
+              45/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/05_closure.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Closure</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="o">++</span><span class="nx">tmp</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+              <p>Whenever you see the function keyword within another function, the inner function has access to variables in the outer function.
+This will always alert 16, because bar can access the x which was defined as an argument to foo, and it can also access tmp from foo.</p>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/05_closure.md">javascript/functions/05_closure.md</a>
+            </aside>
+
+            <aside class="page_number">
+              46/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/05_closure.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition runnable">
+          <div class="inner">
+
+            <header><h1>Closure</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">bar</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="o">++</span><span class="nx">tmp</span><span class="p">));</span> <span class="c1">// 2 + 10 + 4 = 16</span>
+    <span class="p">}</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+<h1>THIS IS NOT A CLOSURE</h1>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+              <p>That is not a closure. A closure is when you return the inner function. The inner function will close-over the variables of foo before leaving.</p>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/05_closure.md">javascript/functions/05_closure.md</a>
+            </aside>
+
+            <aside class="page_number">
+              47/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/05_closure.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code runnable">
+          <div class="inner">
+
+            <header><h1>Closure</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="p">(</span><span class="o">++</span><span class="nx">tmp</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">bar</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// bar is now a closure</span>
+<span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">bar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+              <p>This function will also alert 16, because bar can still refer to x and tmp, even though it is no longer directly inside the scope.
+However, since tmp is still hanging around inside bar's closure, it is also being incremented. It will be incremented each time you call bar.</p>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/05_closure.md">javascript/functions/05_closure.md</a>
+            </aside>
+
+            <aside class="page_number">
+              48/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/functions/05_closure.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Closure</h1></header>
+
+
+            <section><h1>Takeaway:</h1>
+<ul>
+<li>A closure in JavaScript is like keeping a copy of the all the local variables, just as they were when a function exited.</li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/functions/05_closure.md">javascript/functions/05_closure.md</a>
+            </aside>
+
+            <aside class="page_number">
+              49/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/patterns/01_intro.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Patterns</h1></header>
+
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/patterns/01_intro.md">javascript/patterns/01_intro.md</a>
+            </aside>
+
+            <aside class="page_number">
+              50/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/patterns/02_module.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Module Pattern</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">privateVariable</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">privateFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// access privateVariable</span>
+    <span class="p">}</span>
+
+    <span class="nx">GLOBAL</span><span class="p">.</span><span class="nx">firstMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// access privateVariable</span>
+    <span class="p">};</span>
+
+    <span class="nx">GLOBAL</span><span class="p">.</span><span class="nx">secondMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// call privateFunction()</span>
+    <span class="p">};</span>
+<span class="p">}());</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/patterns/02_module.md">javascript/patterns/02_module.md</a>
+            </aside>
+
+            <aside class="page_number">
+              51/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/patterns/02_module.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Revealing Module Pattern</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">singleton</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">privateVariable</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">privateFunction</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// access privateVariable</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">firstMethod</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">// access privateVariable</span>
+        <span class="p">},</span>
+
+        <span class="nx">secondMethod</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// call privateFunction()</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}());</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/patterns/02_module.md">javascript/patterns/02_module.md</a>
+            </aside>
+
+            <aside class="page_number">
+              52/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/patterns/03_sandboxing.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Sandboxing</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nb">document</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
+        <span class="nx">$</span> <span class="o">=</span> <span class="nx">jQuery</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">(),</span>
+        <span class="nx">_</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">_</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">(),</span>
+        <span class="nx">Backbone</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nb">window</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="nx">root</span><span class="p">;</span>
+<span class="p">}</span> <span class="p">(</span><span class="nb">window</span><span class="p">));</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/patterns/03_sandboxing.md">javascript/patterns/03_sandboxing.md</a>
+            </aside>
+
+            <aside class="page_number">
+              53/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/01_intro.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Styles</h1></header>
+
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/01_intro.md">javascript/style/01_intro.md</a>
+            </aside>
+
+            <aside class="page_number">
+              54/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="c1">// Silent error</span>
+<span class="k">return</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+
+<span class="c1">// Works well</span>
+<span class="k">return</span> <span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              55/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              56/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span> <span class="c1">// semicolon insertion</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              57/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span> <span class="c1">// block</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              58/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">// label</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              59/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span>             <span class="c1">// useless</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">// expression</span>
+<span class="p">};</span>            <span class="c1">// statement</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              60/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// semicolon insertion</span>
+<span class="p">};</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              61/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span> <span class="c1">// empty statement</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              62/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/02_subjective.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code no-transition">
+          <div class="inner">
+
+            <header><h1>Style Isn't Subjective</h1></header>
+
+
+            <section><div class="highlight"><pre><span class="k">return</span><span class="p">;</span>
+<span class="p">{</span> <span class="c1">// unreachable statement</span>
+    <span class="nx">ok</span><span class="o">:</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/02_subjective.md">javascript/style/02_subjective.md</a>
+            </aside>
+
+            <aside class="page_number">
+              63/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/03_styles.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Styles</h1></header>
+
+
+            <section><ul>
+<li>Use <code>===</code> and <code>!==</code>, not <code>==</code> or <code>!=</code></li>
+<li>Declare all variables before use</li>
+<li>Declare all functions before use</li>
+<li>Always use blocks with structured statements such as <code>if</code> and <code>while</code></li>
+<li>Variables and functions should start with a lower case letter</li>
+<li>Constructor functions which must be used with the <code>new</code> prefix should start with a capital letter</li>
+<li>Constructor functions should be avoided</li>
+<li>Use <code>{}</code> instead of <code>new Object()</code>. Use <code>[]</code> instead of <code>new Array()</code></li>
+<li><code>eval</code> is Evil</li>
+<li>Don't use <code>with</code></li>
+<li><a href="http://javascript.crockford.com/code.html">http://javascript.crockford.com/code.html</a></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/03_styles.md">javascript/style/03_styles.md</a>
+            </aside>
+
+            <aside class="page_number">
+              64/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: javascript/style/04_jslint.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>JSLint</h1></header>
+
+
+            <section><ul>
+<li>JSLint defines a professional subset of JavaScript (aka. The Good Parts)</li>
+<li>Visual Studio Extension <a href="http://jslint4vs2010.codeplex.com/">http://jslint4vs2010.codeplex.com/</a></li>
+<li><a href="http://www.jslint.com">http://www.jslint.com</a></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="javascript/style/04_jslint.md">javascript/style/04_jslint.md</a>
+            </aside>
+
+            <aside class="page_number">
+              65/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: resources/01_javascript.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Resources</h1></header>
+
+
+            <section><ul>
+<li><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide">MDN Core Javascript 1.5 Guide</a></li>
+<li><a href="https://developer.mozilla.org/en/JavaScript/Reference">MDN Core Javascript 1.5 Reference</a></li>
+<li><a href="http://dev.opera.com/articles/view/javascript-best-practices/">JavaScript best practices</a></li>
+<li><a href="http://net.tutsplus.com/tutorials/javascript-ajax/24-javascript-best-practices-for-beginners/">JavaScript Best Practices for Beginners</a></li>
+<li><a href="http://net.tutsplus.com/tutorials/javascript-ajax/the-essentials-of-writing-high-quality-javascript/">The Essentials of Writing High Quality JavaScript</a></li>
+<li><a href="http://www.jspatterns.com/">JSPatterns.com</a></li>
+<li><a href="http://shichuan.github.com/javascript-patterns/">JavaScript Pattern Collection</a></li>
+<li><a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/">Essential JavaScript Design Patterns For Beginners, Volume 1</a></li>
+</ul></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="resources/01_javascript.md">resources/01_javascript.md</a>
+            </aside>
+
+            <aside class="page_number">
+              66/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: resources/03_books.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+
+            <header><h1>Books</h1></header>
+
+
+            <section><p><img alt="Good Parts" src="resources/../images/books.jpg" /></p></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="resources/03_books.md">resources/03_books.md</a>
+            </aside>
+
+            <aside class="page_number">
+              67/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+      <!-- slide source: about.md -->
+      <div class="slide-wrapper">
+        <div class="slide social">
+          <div class="inner">
+
+            <header><h1>Thanks for listening!</h1></header>
+
+
+            <section><p><img alt="twitter" src="images/twitter_32.png" /> @thedersen</p>
+<p><img alt="mail" src="images/email_32.png" /> thedersen@gmail.com</p>
+<p><img alt="github" src="images/github_32.png" /> http://github.com/thedersen</p></section>
+
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+
+            </section>
+          </div>
+          <footer>
+
+            <aside class="source">
+              Source: <a href="about.md">about.md</a>
+            </aside>
+
+            <aside class="page_number">
+              68/68
+            </aside>
+          </footer>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+
+      <tr id="toc-row-1">
+        <th><a href="#slide1">JavaScript</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+
+
+      <tr id="toc-row-3">
+        <th><a href="#slide3">The Bad Parts</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+
+
+      <tr id="toc-row-4">
+        <th><a href="#slide4">The Good Parts</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+
+
+      <tr id="toc-row-5">
+        <th><a href="#slide5">JavaScript Types</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+
+
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Objects</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+
+
+      <tr id="toc-row-7">
+        <th><a href="#slide7">get, set, and delete</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+
+
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Object literals</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+
+
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Prototype</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+
+
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Prototype</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+
+
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Prototype</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+
+
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Prototype Chaining</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+
+
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Numbers</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+
+
+      <tr id="toc-row-14">
+        <th><a href="#slide14">parseInt</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+
+
+      <tr id="toc-row-15">
+        <th><a href="#slide15">parseInt</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+
+
+      <tr id="toc-row-16">
+        <th><a href="#slide16">parseInt</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+
+
+      <tr id="toc-row-17">
+        <th><a href="#slide17">parseInt</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+
+
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Strings</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+
+
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Booleans</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+
+
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Arrays</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+
+
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Array literals</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+
+
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Array.length</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+
+
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Dates</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+
+
+      <tr id="toc-row-24">
+        <th><a href="#slide24">RegExp</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+
+
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Functions</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+
+
+      <tr id="toc-row-26">
+        <th><a href="#slide26">Functions are first class objects</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+
+
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Function literals</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+
+
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Function invocation patterns</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+
+
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Method invocation pattern</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+
+
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Function invocation pattern</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+
+
+      <tr id="toc-row-31">
+        <th><a href="#slide31">Function invocation pattern</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+
+
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Function invocation pattern</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+
+
+      <tr id="toc-row-33">
+        <th><a href="#slide33">Constructor invocation pattern</a></th>
+        <td><a href="#slide33">33</a></td>
+      </tr>
+
+
+      <tr id="toc-row-34">
+        <th><a href="#slide34">Apply invocation pattern</a></th>
+        <td><a href="#slide34">34</a></td>
+      </tr>
+
+
+      <tr id="toc-row-35">
+        <th><a href="#slide35">Hoisting</a></th>
+        <td><a href="#slide35">35</a></td>
+      </tr>
+
+
+      <tr id="toc-row-36">
+        <th><a href="#slide36">Hoisting</a></th>
+        <td><a href="#slide36">36</a></td>
+      </tr>
+
+
+      <tr id="toc-row-37">
+        <th><a href="#slide37">Hoisting</a></th>
+        <td><a href="#slide37">37</a></td>
+      </tr>
+
+
+      <tr id="toc-row-38">
+        <th><a href="#slide38">Hoisting</a></th>
+        <td><a href="#slide38">38</a></td>
+      </tr>
+
+
+      <tr id="toc-row-39">
+        <th><a href="#slide39">Hoisting</a></th>
+        <td><a href="#slide39">39</a></td>
+      </tr>
+
+
+      <tr id="toc-row-40">
+        <th><a href="#slide40">Scope</a></th>
+        <td><a href="#slide40">40</a></td>
+      </tr>
+
+
+      <tr id="toc-row-41">
+        <th><a href="#slide41">Scope</a></th>
+        <td><a href="#slide41">41</a></td>
+      </tr>
+
+
+      <tr id="toc-row-42">
+        <th><a href="#slide42">Global Scope</a></th>
+        <td><a href="#slide42">42</a></td>
+      </tr>
+
+
+      <tr id="toc-row-43">
+        <th><a href="#slide43">Global Scope</a></th>
+        <td><a href="#slide43">43</a></td>
+      </tr>
+
+
+      <tr id="toc-row-44">
+        <th><a href="#slide44">GLOBAL VARIABLES ARE EVIL!</a></th>
+        <td><a href="#slide44">44</a></td>
+      </tr>
+
+
+      <tr id="toc-row-45">
+        <th><a href="#slide45">Scope</a></th>
+        <td><a href="#slide45">45</a></td>
+      </tr>
+
+
+      <tr id="toc-row-46">
+        <th><a href="#slide46">Closure</a></th>
+        <td><a href="#slide46">46</a></td>
+      </tr>
+
+
+      <tr id="toc-row-47">
+        <th><a href="#slide47">Closure</a></th>
+        <td><a href="#slide47">47</a></td>
+      </tr>
+
+
+      <tr id="toc-row-48">
+        <th><a href="#slide48">Closure</a></th>
+        <td><a href="#slide48">48</a></td>
+      </tr>
+
+
+      <tr id="toc-row-49">
+        <th><a href="#slide49">Closure</a></th>
+        <td><a href="#slide49">49</a></td>
+      </tr>
+
+
+      <tr id="toc-row-50">
+        <th><a href="#slide50">Patterns</a></th>
+        <td><a href="#slide50">50</a></td>
+      </tr>
+
+
+      <tr id="toc-row-51">
+        <th><a href="#slide51">Module Pattern</a></th>
+        <td><a href="#slide51">51</a></td>
+      </tr>
+
+
+      <tr id="toc-row-52">
+        <th><a href="#slide52">Revealing Module Pattern</a></th>
+        <td><a href="#slide52">52</a></td>
+      </tr>
+
+
+      <tr id="toc-row-53">
+        <th><a href="#slide53">Sandboxing</a></th>
+        <td><a href="#slide53">53</a></td>
+      </tr>
+
+
+      <tr id="toc-row-54">
+        <th><a href="#slide54">Styles</a></th>
+        <td><a href="#slide54">54</a></td>
+      </tr>
+
+
+      <tr id="toc-row-55">
+        <th><a href="#slide55">Style Isn't Subjective</a></th>
+        <td><a href="#slide55">55</a></td>
+      </tr>
+
+
+      <tr id="toc-row-56">
+        <th><a href="#slide56">Style Isn't Subjective</a></th>
+        <td><a href="#slide56">56</a></td>
+      </tr>
+
+
+      <tr id="toc-row-57">
+        <th><a href="#slide57">Style Isn't Subjective</a></th>
+        <td><a href="#slide57">57</a></td>
+      </tr>
+
+
+      <tr id="toc-row-58">
+        <th><a href="#slide58">Style Isn't Subjective</a></th>
+        <td><a href="#slide58">58</a></td>
+      </tr>
+
+
+      <tr id="toc-row-59">
+        <th><a href="#slide59">Style Isn't Subjective</a></th>
+        <td><a href="#slide59">59</a></td>
+      </tr>
+
+
+      <tr id="toc-row-60">
+        <th><a href="#slide60">Style Isn't Subjective</a></th>
+        <td><a href="#slide60">60</a></td>
+      </tr>
+
+
+      <tr id="toc-row-61">
+        <th><a href="#slide61">Style Isn't Subjective</a></th>
+        <td><a href="#slide61">61</a></td>
+      </tr>
+
+
+      <tr id="toc-row-62">
+        <th><a href="#slide62">Style Isn't Subjective</a></th>
+        <td><a href="#slide62">62</a></td>
+      </tr>
+
+
+      <tr id="toc-row-63">
+        <th><a href="#slide63">Style Isn't Subjective</a></th>
+        <td><a href="#slide63">63</a></td>
+      </tr>
+
+
+      <tr id="toc-row-64">
+        <th><a href="#slide64">Styles</a></th>
+        <td><a href="#slide64">64</a></td>
+      </tr>
+
+
+      <tr id="toc-row-65">
+        <th><a href="#slide65">JSLint</a></th>
+        <td><a href="#slide65">65</a></td>
+      </tr>
+
+
+      <tr id="toc-row-66">
+        <th><a href="#slide66">Resources</a></th>
+        <td><a href="#slide66">66</a></td>
+      </tr>
+
+
+      <tr id="toc-row-67">
+        <th><a href="#slide67">Books</a></th>
+        <td><a href="#slide67">67</a></td>
+      </tr>
+
+
+      <tr id="toc-row-68">
+        <th><a href="#slide68">Thanks for listening!</a></th>
+        <td><a href="#slide68">68</a></td>
+      </tr>
+
+
+    </table>
+  </div>
+
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Run code sample</th>
+        <td>r</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
