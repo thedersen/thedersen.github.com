@@ -57,7 +57,7 @@ a, a:visited, a:hover {
   color: $green;
 }
 
-#posts, #talks, #paginate {
+#posts, #talks, #paginate, #projects {
   min-height: 115px;
   list-style-type: none;
   margin: 0;
@@ -67,7 +67,7 @@ a, a:visited, a:hover {
   }
 }
 
-#talks span {
+#talks span, #projects span {
   color: $green;
 }
 
