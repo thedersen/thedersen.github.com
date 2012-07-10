@@ -3,7 +3,7 @@ layout: post
 title: Backbone.Validation
 published: true
 ---
-Update: If you are looking for documentation for Backbone.Validation it can be found [here](http://thedersen.com/backbone.validation/)
+Update: If you are looking for documentation for Backbone.Validation it can be found [here](http://thedersen.com/projects/backbone-validation/)
 
 I just released version 0.2.0 of my [validation plugin](http://github.com/thedersen/backbone.validation) for [Backbone.js](http://backbonejs.org/). The plugin lets you declare validation rules on your Backbone model, ensuring that input from the user is valid. It currently ships with 18 built-in validators such as required, min, max, range, length, minLength, maxLength, regex-validator etc. In addition to the built-in validators, it is very easy to extend with your custom validators.
 
@@ -117,3 +117,4 @@ With this declarative way of defining validation, combined with the conventional
 But remember: you add client validation to be nice to your users, but you also need to add server validation to be nice to yourself and your company.
 
 The source code for this project is licensed under the [MIT License](http://thedersen.mit-license.org/) and is available on [GitHub](https://github.com/thedersen/backbone.validation).
+
