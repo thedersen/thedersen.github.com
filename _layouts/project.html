@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src='/javascripts/libs/documentup.min.js'></script>
+    <script>
+      DocumentUp.document({
+        repo: '{{ page.repo }}',
+        name: '{{ page.name }}',
+        twitter: '{{ site.twitter_user }}',
+        google_analytics: '{{ site.google_analytics_tracking_id }}',
+        afterRender: function(){
+          if('onhashchange' in window){
+            window.onhashchange = function () {
+              _gaq.push(['_trackPageview', location.pathname + location.search  + location.hash]);
+            }
+          }
+        }
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
