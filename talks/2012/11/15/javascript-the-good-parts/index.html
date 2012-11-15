@@ -1,0 +1,965 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>JavaScript, the Good Parts</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="themes/miles/styles/style.css">
+	<link rel="stylesheet" href="themes/miles/styles/print.css" media="print">
+	<!--
+		To apply styles to the certain slides
+		use slide ID to get needed elements
+		-->    
+	<style> 
+    .slide.cover section:before {
+      position:absolute;
+      top:0;
+      right:90px;
+      width:40px;
+      height:160px;
+      background:url(pictures/ribbon176.svg) no-repeat;
+      content:'';
+		}
+    .slide.cover section:after {
+      position:absolute;
+      top:0;
+      left:90px;
+      width:40px;
+      height:160px;
+      background:url(pictures/ribbon1100.svg) no-repeat;
+      content:'';
+		}
+    #brendan section:after, #brendan section:before {
+      display: none;
+    }
+    blockquote {
+      font-size: 1.5em;
+    }
+    pre {
+      height: 450px;
+      width: 550px;
+      line-height: 1.3;
+      margin-left: -45px;
+    }
+    pre.wide {
+      width: 700px;
+    }
+    pre.ace-tm .ace_gutter {
+      background: #FFFFFF;
+      color: #BBB;
+    }
+    pre.ace-tm .ace_gutter-active-line {
+      background-color: #FFFFFF;
+    }
+    .output {
+      float: right;
+      width: 340px;
+    }
+    .output.wide {
+      float: none;
+      clear: both;
+      width: 700px;
+    }
+
+	</style>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{ site.google_analytics_tracking_id }}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>JavaScript, the Good Parts</h1>
+    <p><a href="http://thedersen.com">Thomas Pedersen,</a> <a href="http://miles.no">Miles AS</a></p>
+	</header>
+	<div class="slide cover h" id="brendan"><div>
+		<section>
+			<img src="pictures/brendan-eich.jpg" alt="">
+		</section>
+	</div></div>
+	<div class="slide shout" id="brendan-quote"><div>
+    <section>
+      <header></header>
+      <blockquote>
+        <p>JS had to 'look like Java' only less so, be Java’s dumb kid brother or boy-hostage sidekick. Plus, I had to be done in ten days or something worse than JS would have happened</p>
+        <cite><a href="http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/comment-page-1/#comment-1021">- Brendan Eich, 2010</a></cite>
+      </blockquote>
+    </section>
+	</div></div>
+	<div class="slide cover w" id="cover"><div>
+		<section>
+			<img src="pictures/cover.jpg" alt="">
+		</section>
+	</div></div>
+	<div class="slide" id="the-bad-parts"><div>
+		<section>
+			<header>
+				<h2>The Bad Parts</h2>
+			</header>
+      <ul>
+        <li>Global variables</li>
+        <li>Scope</li>
+        <li>Semicolon insertion</li>
+        <li><code>+</code> adds and concatenates</li>
+        <li><code>typeof</code></li>
+        <li><code>with</code> and <code>eval</code></li>
+        <li>Phony arrays</li>
+        <li><code>undefined</code>, <code>NaN</code></li>
+        <li><code>==</code> and <code>!=</code></li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="the-good-parts"><div>
+		<section>
+			<header>
+				<h2>The Good Parts</h2>
+			</header>
+      <ul>
+        <li>Functions as first class objects</li>
+        <li>Dynamic objects with prototypal inheritance</li>
+        <li>Object literals</li>
+        <li>Array literals</li>
+        <li>Loose typing</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="types"><div>
+		<section>
+			<header>
+        <h2>JavaScript Types</h2>
+			</header>
+      <ul>
+        <li>Object</li>
+        <li>String</li>
+        <li>Boolean</li>
+        <li>Array</li>
+        <li>Date</li>
+        <li>RegExp</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="objects"><div>
+		<section>
+			<header>
+        <h2>Objects</h2>
+			</header>
+      <ul>
+        <li>An object is a dynamic, mutable collection of properties</li>
+        <li>Every property has a key string that is unique within that object</li>
+        <li>Prototype linkage feature, that allows one object to inherit properties of another</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="set-get-delete"><div>
+		<section>
+			<header>
+				<h2>set, get and delete</h2>
+			</header>
+      <pre id="js-set-get-delete">
+var object = {};
+
+object.name = 'Gob';
+object['name'] = 'Gob';
+console.log(object.name);
+
+var name = object.name;
+var name = object['name'];
+console.log(name);
+
+delete object.name;
+delete object['name'];
+console.log(object.name);</pre>
+      <div class="output">
+      </div>
+		</section>
+	</div></div>
+	<div class="slide" id="object-literals"><div>
+		<section>
+			<header>
+				<h2>Object Literals</h2>
+			</header>
+      <ul>
+        <li>An expressive notation for creating objects</li>
+      </ul>
+      <pre id="js-object-literals">
+var emptyObject = { };
+
+var myObject = {
+  'some property': 'some value',
+  foo: emptyObject,
+  method: function(param) {
+    // do something
+  }
+};</pre>
+      <div class="output">
+      </div>
+		</section>
+	</div></div>
+	<div class="slide" id="prototype"><div>
+		<section>
+			<header>
+				<h2>Prototype</h2>
+			</header>
+      <ul>
+        <li>Every object is linked to a prototype object from which it can inherit properties</li>
+        <li>All objects created from object literals are linked to <code>Object.prototype</code></li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="prototype-2"><div>
+		<section>
+			<header>
+				<h2>Prototype</h2>
+			</header>
+      <pre id="js-prototype-2">
+var Person = function (name) {
+  this.name = name;
+};
+
+Person.prototype.sayHello = function () {
+  console.log("Hello, I'm " + this.name);
+};
+
+var tobias = new Person('Tobias');
+tobias.sayHello();</pre>
+      <div class="output">
+      </div>
+		</section>
+	</div></div>
+	<div class="slide" id="prototype-3"><div>
+		<section>
+			<header>
+				<h2>Prototype</h2>
+			</header>
+      <pre id="js-prototype-3">
+var Person = function (name) {
+  this.name = name;
+};
+
+Person.prototype.sayHello = function () {
+  console.log("Hello, I'm " + this.name);
+};
+
+var tobias = new Person('Tobias');
+tobias.sayHello();
+
+Person.prototype.sayMyName = function () {
+  console.log('My name is ' + this.name);
+};
+tobias.sayMyName();</pre>
+      <div class="output">
+      </div>
+		</section>
+	</div></div>
+	<div class="slide" id="prototype-chaining"><div>
+		<section>
+			<header>
+				<h2>Prototype Chaining</h2>
+			</header>
+      <pre id="js-prototype-chaining">
+var Person = function () { };
+Person.prototype.sayHello = function () {
+  console.log("Hello, I'm " + this.name);
+};
+
+var Bluth = function (name) {
+  this.name = name;
+};
+
+Bluth.prototype = new Person();
+
+var bluth = new Bluth('Buster');
+bluth.sayHello();</pre>
+      <div class="output">
+      </div>
+		</section>
+	</div></div>
+	<div class="slide" id="numbers"><div>
+		<section>
+			<header>
+				<h2>Numbers</h2>
+			</header>
+      <ul>
+        <li>Only one number type</li>
+        <li>double-precision 64-bit format IEEE 754 values</li>
+        <li>Math namespace for advanced operations</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="parse-int"><div>
+		<section>
+			<header>
+				<h2>parseInt</h2>
+			</header>
+      <pre id="js-parse-int">
+console.log(parseInt('123', 10));
+console.log(parseInt('010', 10));
+console.log(parseInt('hello'));</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="strings"><div>
+		<section>
+			<header>
+				<h2>Strings</h2>
+			</header>
+      <ul>
+        <li>Sequences of unicode characters (16 bit) </li>
+        <li>Similar strings are equal</li>
+        <li>Strings are objects</li>
+        <li>Strings are immutable</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="booleans"><div>
+		<section>
+			<header>
+        <h2>Booleans</h2>
+			</header>
+      <ul>
+        <li><code>true</code> or <code>false</code></li>
+        <li><code>0</code>, <code>""</code>, <code>NaN</code>, <code>null</code> and <code>undefined</code> are falsy </li>
+        <li>Everything else is truthy </li>
+        <li>Boolean operations: <code>&amp;&amp;</code>, <code>||</code> and <code>!</code></li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="arrays"><div>
+		<section>
+			<header>
+        <h2>Arrays</h2>
+			</header>
+      <ul>
+        <li>A special type of object; Keys are whole numbers</li>
+        <li>No need to provide type or length when creating an array</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="array-literals"><div>
+		<section>
+			<header>
+        <h2>Array Literals</h2>
+			</header>
+      <ul>
+        <li>An expressive notation for creating arrays</li>
+      </ul>
+      <pre id="js-array-literals">
+var array = [
+  'one', 
+  'two', 
+  { number: 'three' }, 
+  function() {}
+];</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="dates"><div>
+		<section>
+			<header>
+        <h2>Dates</h2>
+			</header>
+      <pre id="js-dates">
+var date = new Date('November 15, 2012');
+
+console.log(date.getFullYear());
+console.log(date.getMonth());
+console.log(date.getDate());</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="regexp"><div>
+		<section>
+			<header>
+        <h2>RegExp</h2>
+			</header>
+      <pre id="js-regexp">
+var str = 'me@example.com';
+var pattern = /[\w-]+@[\w-]+\.+[\w-]+/i;
+
+console.log(str.match(pattern));
+console.log(pattern.test(str));</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide shout" id="functions"><div>
+		<section>
+			<header>
+        <h2>Functions</h2>
+			</header>
+		</section>
+	</div></div>
+	<div class="slide" id="first-class-objects"><div>
+		<section>
+			<header>
+        <h2>Functions are First Class Objects</h2>
+			</header>
+      <ul>
+        <li>May be passed as an argument to a function</li>
+        <li>May be returned from a function</li>
+        <li>May be assigned to a variable</li>
+        <li>May be stored in an object or array</li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="function-literals"><div>
+		<section>
+			<header>
+        <h2>A Function has Four Parts</h2>
+			</header>
+      <ul>
+        <li>the reserved word <code>function</code></li>
+        <li>optional name (which can be used to call itself in recursion)</li>
+        <li>optional parameters</li>
+        <li>set of statements wrapped in curly braces</li>
+      </ul>
+      <pre id="js-function-literals">
+var add = function(a, b) {
+    return a + b;
+};
+
+function add(a, b) {
+    return a + b;
+}</pre>
+		</section>
+	</div></div>
+	<div class="slide" id="invocation-patterns"><div>
+		<section>
+			<header>
+        <h2>Invocation Patterns</h2>
+			</header>
+      <ul>
+        <li>Method invocation pattern</li>
+        <li>Function invocation pattern</li>
+        <li>Constructor invocation pattern</li>
+        <li>Apply invocation pattern</li>
+      </ul>
+      <p>These patterns differ in how <code>this</code> is initialized</p>
+		</section>
+	</div></div>
+	<div class="slide" id="method-invocation-pattern"><div>
+		<section>
+			<header>
+        <h2>Method Invocation Pattern</h2>
+			</header>
+      <ul>
+        <li>When a function is stored as a property of an object, it is called a method</li>
+        <li>When a method is invoked, <code>this</code> is bound to that object (late binding)</li>
+      </ul>
+      <pre id="js-method-invocation-pattern">
+var myObject = {
+  value: 2,
+  increment: function(inc) {
+    this.value += inc;
+    console.log(this);
+    console.log(this.value);
+  }
+};
+
+myObject.increment(2);</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="function-invocation-pattern"><div>
+		<section>
+			<header>
+        <h2>Function Invocation Pattern</h2>
+			</header>
+      <ul>
+        <li>When the function is <strong>not</strong> the property of an object, it is called a function</li>
+        <li>When a function is invoked, <code>this</code> is bound to the <strong>global</strong> object</li>
+      </ul>
+      <pre id="js-function-invocation-pattern">
+var foo = function() {
+  console.log(this);
+};
+
+foo();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="function-invocation-pattern-2"><div>
+		<section>
+			<header>
+        <h2>Function Invocation Pattern</h2>
+			</header>
+      <pre id="js-function-invocation-pattern-2">
+var myObject = {
+  value: 1,
+  double: function() {
+
+    var helper = function() {
+      console.log(this.value);
+    };
+      
+    helper(); // invoke as a function
+  }
+};
+
+myObject.double(); // invoke as a method</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="constructor-invocation-pattern"><div>
+		<section>
+			<header>
+        <h2>Constructor Invocation Pattern</h2>
+			</header>
+      <ul>
+        <li>If a function is invoked with the <code>new</code> prefix, a new object will be created with a hidden link to the value of the function's <code>prototype</code> member</li>
+        <li><code>this</code> is bound to that new object</li>
+        <li>By convention, they are kept in variables with a capitalized name</li>
+      </ul>
+      <pre id="js-constructor-invocation-pattern">
+var Foo = function(val) {
+  this.value = val;
+  console.log(this.value);
+  console.log(this);
+};
+
+var myFoo = new Foo('confused');
+var myFoo = Foo('confused');</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="apply-invocation-pattern"><div>
+		<section>
+			<header>
+        <h2>Apply Invocation Pattern</h2>
+			</header>
+      <ul>
+        <li>The <code>apply</code> or <code>call</code> method lets us choose the value of <code>this</code></li>
+      </ul>
+      <pre id="js-apply-invocation-pattern">
+var add = function(a, b) {
+  console.log(a + b + this.c);
+};
+
+var context = {
+  c: 5
+};
+
+add(3, 4);
+add.apply(context, [3, 4]);
+add.call(context, 3, 4);</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="arguments"><div>
+		<section>
+			<header>
+        <h2>arguments</h2>
+			</header>
+      <ul>
+        <li>In addition to <code>this</code>, all functions get a bonus parameter <code>arguments</code></li>
+        <li>It holds all arguments passed to the function, including those that where not assigned to a parameter</li>
+      </ul> 
+      <pre id="js-arguments">
+var sum = function(){
+  var i, sum = 0;
+  for(i = 0; i < arguments.length; i += 1){
+    sum += arguments[i];
+  }
+  return sum;
+};
+
+console.log(sum(3, 7, 9, 23));</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="hoisting"><div>
+		<section>
+			<header>
+        <h2>Hoisting</h2>
+			</header>
+      <pre id="js-hoisting">
+var myVar = 'my value';
+
+function bar() {
+  console.log(myVar);
+  var myVar = 'local value';
+}
+
+bar();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="hoisting-2"><div>
+		<section>
+			<header>
+        <h2>Hoisting</h2>
+			</header>
+      <pre id="js-hoisting-2">
+var myVar = 'my value';
+
+function bar() {
+  var myVar = undefined;
+  console.log(myVar);
+  myVar = 'local value';
+}
+
+bar();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="hoisting-3"><div>
+		<section>
+			<header>
+        <h2>Hoisting</h2>
+			</header>
+      <pre id="js-hoisting-3">
+console.log(subtract(2, 3));
+function subtract(a, b) {
+  return a - b;
+}</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+  <div class="slide" id="hoisting-takeaway"><div>
+    <section>
+      <header>
+        <h2>Hoisting Takeaway</h2>
+      </header>
+      <ul>
+        <li>Declare <strong>all</strong> variables at the top of your function</li>
+        <li>Declare <strong>all</strong> functions before you call them</li>
+      </ul>
+    </section>
+  </div></div>
+	<div class="slide" id="scope"><div>
+		<section>
+			<header>
+        <h2>Scope</h2>
+			</header>
+      <pre id="js-scope">
+var foo = 1;
+
+function bar() {
+  if (!foo) {
+    var foo = 10;
+  }
+  console.log(foo);
+}
+
+bar();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="scope-1"><div>
+		<section>
+			<header>
+        <h2>Scope</h2>
+			</header>
+      <pre id="js-scope-1">
+var foo = 1;
+
+function bar() {
+  var foo = undefined;
+  if (!foo) { // truthy
+    foo = 10;
+  }
+  console.log(foo);
+}
+
+bar();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="global-scope"><div>
+		<section>
+			<header>
+        <h2>Global Scope</h2>
+			</header>
+      <pre id="js-global-scope">
+function bar() {
+  x = 10;
+}
+bar();
+console.log(x);
+
+
+function foo() {
+  var y = 10;
+}
+foo();
+console.log(y);</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide shout" id="shout"><div>
+		<section>
+			<header>
+        <h2>GLOBAL VARIABLES<br>ARE EVIL!</h2>
+			</header>
+		</section>
+	</div></div>
+  <div class="slide" id="scope-takeaway"><div>
+    <section>
+      <header>
+        <h2>Scope Takeaway</h2>
+      </header>
+      <ul>
+        <li>JavaScript has <strong>function scope</strong>, not block scope</li>
+        <li>If you forget the <strong>var</strong> keyword, you create a global reference</li>
+        <li><strong>Never</strong> forget the var keyword</li>
+      </ul>
+    </section>
+  </div></div>
+  <div class="slide" id="closure"><div>
+    <section>
+      <header>
+        <h2>Closure</h2>
+      </header>
+      <pre id="js-closure">
+function foo(x) {
+  var tmp = 3;
+
+  function bar(y) {
+    console.log(x + y + (++tmp));
+  }
+
+  bar(10);
+}
+
+foo(2);
+foo(2);
+foo(2);
+foo(2);</pre>
+      <div class="output"></div>
+    </section>
+  </div></div>
+  <div class="slide" id="closure-2"><div>
+    <section>
+      <header>
+        <h2>Closure</h2>
+      </header>
+      <pre id="js-closure-2">
+function foo(x) {
+  var tmp = 3;
+
+  return function (y) {
+    console.log(x + y + (++tmp));
+  }
+}
+
+var bar = foo(2);
+bar(10);
+bar(10);
+bar(10);
+bar(10);</pre>
+      <div class="output"></div>
+    </section>
+  </div></div>
+  <div class="slide" id="closure-takeaway"><div>
+    <section>
+      <header>
+        <h2>Closure Takeaway</h2>
+      </header>
+      <ul>
+        <li>A closure in JavaScript is like keeping a copy of the all the local variables, just as they were when a function exited.</li>
+      </ul>
+    </section>
+  </div></div>
+	<div class="slide shout" id="pattern"><div>
+		<section>
+			<header>
+        <h2>Patterns</h2>
+			</header>
+		</section>
+	</div></div>
+	<div class="slide" id="module-pattern"><div>
+		<section>
+			<header>
+        <h2>Module Pattern</h2>
+			</header>
+      <pre id="js-module-pattern">
+(function (root) {
+  var privateVariable;
+  function privateFunction(x) {
+    privateVariable = x;
+  }
+
+  root.firstMethod = function (y) {
+    privateFunction(y);
+  };
+
+  root.secondMethod = function () {
+    console.log(privateVariable);
+  };
+}(this));
+
+this.firstMethod(10);
+this.secondMethod();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="revealing-module-pattern"><div>
+		<section>
+			<header>
+        <h2>Revealing Module Pattern</h2>
+			</header>
+      <pre id="js-revealing-module-pattern">
+var singleton = (function () {
+  var privateVariable;
+  function privateFunction(x) {
+    privateVariable = x;
+  }
+
+  return {
+    firstMethod: function (y) {
+      privateFunction(y);
+    },
+    secondMethod: function () {
+      console.log(privateVariable);
+    }
+  };
+}());
+
+singleton.firstMethod(10);
+singleton.secondMethod();</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="sandboxing"><div>
+		<section>
+			<header>
+        <h2>Sandboxing</h2>
+			</header>
+      <pre id="js-sandboxing">
+(function (window, undefined) {
+  var document = window.document,
+      $ = window.jQuery.noConflict();
+
+  var root = {};
+
+  // ...
+
+  window.root = root;
+} (window));</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide shout" id="styles"><div>
+		<section>
+			<header>
+        <h2>Styles</h2>
+			</header>
+		</section>
+	</div></div>
+	<div class="slide" id="styles-not-subjective"><div>
+		<section>
+			<header>
+        <h2>Style is Not Subjective</h2>
+			</header>
+      <pre id="js-styles-not-subjective">
+var foo = function(){
+  return {
+    ok: true
+  };
+};
+
+console.log(foo().ok);</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="style-tips"><div>
+		<section>
+			<header>
+        <h2>Style is Not Subjective</h2>
+			</header>
+      <ul>
+        <li>Use <code>===</code> and <code>!==</code>, not <code>==</code> or <code>!=</code></li>
+        <li>Declare all variables and functions before use</li>
+        <li>Always use blocks with structured statements such as <code>if</code> and <code>while</code></li>
+        <li>Variables and functions should start with a lower case letter</li>
+        <li>Constructor functions which must be used with the <code>new</code> prefix should start with a capital letter</li>
+        <li>Use <code>{}</code> instead of <code>new Object()</code>. Use <code>[]</code> instead of <code>new Array()</code></li>
+        <li><code>eval</code> is Evil</li>
+        <li>Don't use <code>with</code></li>
+        <li><a href="http://javascript.crockford.com/code.html" target="_blank">http://javascript.crockford.com/code.html</a></li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="js-lint"><div>
+		<section>
+			<header>
+        <h2>JSLint || JSHint</h2>
+			</header>
+      <ul>
+        <li>A JavaScript program that looks for problems in JavaScript programs</li>
+        <li>It is a code quality tool</li>
+      </ul>
+      <ul>
+        <li><a href="http://jslint.com" target="_blank">http://jslint.com</a></li>
+        <li><a href="http://jshint.com" target="_blank">http://jshint.com</a></li>
+      </ul>
+		</section>
+	</div></div>
+	<div class="slide" id="trivia"><div>
+		<section>
+			<header>
+        <h2>Trivia</h2>
+			</header>
+      <pre id="js-trivia">
+var trivia = Array(8).join('hi' + 1);
+
+console.log(trivia);</pre>
+      <div class="output"></div>
+		</section>
+	</div></div>
+	<div class="slide" id="thank-you"><div>
+		<section>
+			<header>
+				<h2>JavaScript, the Good Parts</h2>
+			</header>
+			<p>Thomas Pedersen, Miles AS</p>
+			<ul>
+				<li><a href="http://thedersen.com">http://thedersen.com</a></li>
+				<li><a href="http://twitter.com/thedersen">twitter.com/thedersen</a></li>
+				<li><a href="mailto:thomas.pedersen@miles.no">thomas.pedersen@miles.no</a></li>
+			</ul>
+			<img src="pictures/miles.png" style="display: block;width: 70%;margin: 0 auto;" alt="">
+		</section>
+	</div></div>
+	<script src="scripts/script.js"></script>
+  <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    shower.onchange = function(){
+      var pre = document.querySelector(window.location.hash + ' pre');
+      if(pre){
+        code(pre.id);
+      }
+    };
+
+    shower.onchange();
+
+    function code(id) {
+      if(typeof editor !== 'undefined'){
+        editor.destroy();
+      }
+      editor = ace.edit(id);
+      editor.setTheme("ace/theme/textmate");
+      editor.getSession().setMode("ace/mode/javascript");
+      editor.setFontSize("18px");
+      editor.setHighlightActiveLine(false);
+      editor.setShowInvisibles(false);
+      editor.setDisplayIndentGuides(false);
+      editor.renderer.setShowPrintMargin(false);
+      editor.getSession().setFoldStyle("manual");
+      editor.setShowFoldWidgets(false);
+      editor.getSession().setUseWrapMode(true);
+      editor.getSession().setWrapLimitRange(43, 43);
+      editor.getSession().setTabSize(2);
+      editor.getSession().setUseWorker(false);
+      editor.resize(true);
+      editor.blur();
+    }
+  </script>
+</body>
+</html>
