@@ -171,6 +171,9 @@ BODY {
 	background:#000;
 	overflow:hidden;
 	}
+.slide.cover section:before {
+  display:none;
+}
 .slide.cover img,
 .slide.cover svg,
 .slide.cover video,

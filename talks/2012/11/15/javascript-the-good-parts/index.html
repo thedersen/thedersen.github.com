@@ -11,7 +11,7 @@
 		use slide ID to get needed elements
 		-->    
 	<style> 
-    .slide.cover section:before {
+    #cover section:before {
       position:absolute;
       top:0;
       right:90px;
@@ -19,8 +19,9 @@
       height:160px;
       background:url(pictures/ribbon176.svg) no-repeat;
       content:'';
+      display:block;
 		}
-    .slide.cover section:after {
+    #cover section:after {
       position:absolute;
       top:0;
       left:90px;
@@ -28,15 +29,16 @@
       height:160px;
       background:url(pictures/ribbon1100.svg) no-repeat;
       content:'';
+      display:block;
 		}
-    #brendan section:after, #brendan section:before {
-      display: none;
+    .slide.cover section {
+      color: white;
     }
     blockquote {
       font-size: 1.5em;
     }
     pre {
-      height: 450px;
+      height: auto;
       width: 550px;
       line-height: 1.3;
       margin-left: -45px;
@@ -62,23 +64,26 @@
     }
 
 	</style>
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '{{ site.google_analytics_tracking_id }}']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
 </head>
 <body class="list">
 	<header class="caption">
 		<h1>JavaScript, the Good Parts</h1>
     <p><a href="http://thedersen.com">Thomas Pedersen,</a> <a href="http://miles.no">Miles AS</a></p>
 	</header>
+	<div class="slide cover" id="instructions"><div>
+		<section>
+			<header>
+				<h2>Instructions</h2>
+			</header>
+      <ul>
+        <li>Use <code>arrow keys</code> to switch slides</li>
+        <li>Use <code>ctrl+r</code> to run the code samples</li>
+        <li>Use <code>ctrl+i</code> to focus the code editor</li>
+        <li>Use <code>esc</code> to blur the code editor or to show the slide overview</li>
+        <li>Enjoy!</li>
+      </ul>
+		</section>
+	</div></div>
 	<div class="slide cover h" id="brendan"><div>
 		<section>
 			<img src="pictures/brendan-eich.jpg" alt="">
@@ -933,6 +938,15 @@ console.log(trivia);</pre>
     shower.onchange = function(){
       var pre = document.querySelector(window.location.hash + ' pre');
       if(pre){
+        function getTransform() {
+            var denominator = Math.max(
+              document.body.clientWidth / window.innerWidth,
+              document.body.clientHeight / window.innerHeight
+            );
+
+            return (1 / denominator);
+        }
+        pre.style.height = (pre.getBoundingClientRect().height / getTransform()) + 'px';
         code(pre.id);
       }
     };
@@ -960,6 +974,17 @@ console.log(trivia);</pre>
       editor.resize(true);
       editor.blur();
     }
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12325477-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
   </script>
 </body>
 </html>

@@ -25,10 +25,10 @@ window.shower = (function () {
 
 	function applyTransform(transform) {
 		body.style.WebkitTransform = transform;
-	//	body.style.MozTransform = transform;
-	//	body.style.msTransform = transform;
-	//	body.style.OTransform = transform;
-	//	body.style.transform = transform;
+		body.style.MozTransform = transform;
+		body.style.msTransform = transform;
+		body.style.OTransform = transform;
+		body.style.transform = transform;
 	}
 
 	_.next = function () {
@@ -216,7 +216,10 @@ window.shower = (function () {
 			break;
 
 			case 27: // Esc
-				if (!_.isListMode()) {
+        if(window.editor && editor.isFocused()){
+          editor.blur();
+        }
+        else if (!_.isListMode()) {
 					e.preventDefault();
 
 					history.pushState(null, null, url.pathname + _.getSlideHash(currentSlideNumber));
@@ -256,10 +259,10 @@ window.shower = (function () {
 
 //			case 9: // Tab = +1; Shift + Tab = -1
 //			case 32: // Space = +1; Shift + Space = -1
-				e.preventDefault();
-
-				_[e.shiftKey ? 'previous' : 'next']();
-			break;
+//				e.preventDefault();
+//
+//				_[e.shiftKey ? 'previous' : 'next']();
+//			break;
 
       case 82: // r
         if(e.ctrlKey){
