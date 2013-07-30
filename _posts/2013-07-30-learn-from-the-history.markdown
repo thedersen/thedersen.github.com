@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Learn from the history
-published: false
+published: true
 ---
 
 Sharing knowledge is hard. 
