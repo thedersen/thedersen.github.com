@@ -1,9 +1,9 @@
 title: thedersen.com
-url: http://thedersen.com
+url: https://thedersen.com
 author: Thomas Pedersen
 email: thedersen@gmail.com
 permalink: /blog/:year/:month/:day/:title/
-feed_url: http://feeds.feedburner.com/thedersen
+feed_url: https://feeds.feedburner.com/thedersen
 
 markdown: rdiscount
 pygments: true
